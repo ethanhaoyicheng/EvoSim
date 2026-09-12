@@ -1,0 +1,1 @@
+Device must be able to run python software
