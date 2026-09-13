@@ -106,14 +106,14 @@ hcolorset_button = Button((813,500,70,25), "Colour!", category="home")
 start = Button((540,600,200,45), "GENERATE WORLD", category="home")
 
 
-# --- SFX ---
+#SFX
 sfx_up = Button((20,20,30,30), "+")
 sfx_down = Button((60,20,30,30), "-")
 sfx_slider = Slider((100,25,150,10), (0, 1), myShell.sfx_volume)
 sfx_mute = Button((260,20,60,30), "Mute")
 sfx_unmute = Button((330,20,70,30), "Unmute")
 
-# --- MUSIC ---
+#MUSIC
 music_play = Button((20,70,80,30), "Play/Pause")
 music_next = Button((110,70,60,30), "Next")
 music_prev = Button((180,70,60,30), "Prev")
@@ -125,23 +125,23 @@ music_slider = Slider((330,75,150,10), (0, 1), myShell.music_volume)
 music_mute = Button((490,70,60,30), "Mute")
 music_unmute = Button((560,70,70,30), "Unmute")
 
-# --- BRIGHTNESS / CONTRAST ---
+#  BRIGHTNESS / CONTRAST 
 brightness_slider = Slider((20,130,200,10), (0.2, 1.5), 1)
 contrast_toggle = Button((230,120,120,30), "Hi-Contrast", toggleable=True)
 
-# --- LANGUAGE ---
+#  LANGUAGE 
 languages = ["EN","CN","TM"]
 lang_buttons = [Button((20+i*60,170,50,30), lang) for i,lang in enumerate(languages)]
 
-# --- UI ---
+#  UI 
 hide_ui = Button((20,210,100,30), "Hide UI")
 
-# --- SIM CONTROL ---
+#  SIM CONTROL 
 speed_buttons = [Button((20+i*60,260,50,30), f"x{s}") for i,s in enumerate([1,2,4,8])]
 pause_btn = Button((520,650,100,30), "Pause")
 end_btn = Button((635,650,100,30), "End")
 
-# --- TUTORIAL ---
+#  TUTORIAL 
 tutorial_texts = [
     "Welcome to your very own realm! (Press the > icon)",
     "Each of those little circles moving around in your realm is an organism, also known as an 'anima'",
@@ -236,7 +236,7 @@ def handle_ui(event, shell, sim_window, realm):
     for s in Slider.slider_list:
         s.handle_event(event)
 
-    # --- SFX ---
+    #  SFX 
     if sfx_up.clicked: shell.sfx_volume = min(1, shell.sfx_volume+0.05); sfx_slider.set_status(shell.sfx_volume)
     if sfx_down.clicked: shell.sfx_volume = max(0, shell.sfx_volume-0.05); sfx_slider.set_status(shell.sfx_volume)
     if sfx_mute.clicked: shell.sfx_muted = True
@@ -247,7 +247,7 @@ def handle_ui(event, shell, sim_window, realm):
     for i in range(8):
         pygame.mixer.Channel(i).set_volume(0 if shell.sfx_muted else shell.sfx_volume)
 
-    # --- MUSIC ---
+    #  MUSIC 
     if music_play.clicked:
         if pygame.mixer.music.get_busy():
             pygame.mixer.music.pause()
@@ -270,21 +270,21 @@ def handle_ui(event, shell, sim_window, realm):
     if music_slider.dragging: shell.music_volume = music_slider.status
     pygame.mixer.music.set_volume(0 if shell.music_muted else shell.music_volume)
 
-    # --- BRIGHTNESS ---
+    #  BRIGHTNESS 
     shell.brightness = brightness_slider.status
 
 
 
-    # --- LANGUAGE ---
+    #  LANGUAGE 
     for i,b in enumerate(lang_buttons):
         if b.clicked:
             print("Language:", languages[i])
 
-    # --- UI ---
+    #  UI 
     if hide_ui.clicked:
         shell.ui_visible = not shell.ui_visible
 
-    # --- SIM ---
+    #  SIM 
     for i,b in enumerate(speed_buttons):
         if b.clicked:
             shell.sim_speed = [1,2,4,8][i]
@@ -295,7 +295,7 @@ def handle_ui(event, shell, sim_window, realm):
     if end_btn.clicked:
         shell.running = False
 
-    # --- TUTORIAL ---
+    #  TUTORIAL 
     if next_tut.clicked:
         shell.tutorial_index = min(len(tutorial_texts)-1, shell.tutorial_index+1)
     if prev_tut.clicked:
