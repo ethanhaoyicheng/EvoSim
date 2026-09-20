@@ -65,7 +65,7 @@ declutter_classic_set = {
     "adult" : "yellow",
 }
 
-declutter_mature_set = mature_set
+declutter_mature_set = mature_set.copy()
 declutter_mature_set["fruit_set"] = None
 
 #olivegreen?
@@ -124,9 +124,9 @@ def draw_world_blit(realm):
             if realm.environment[row][col] == "ice":
                 pygame.draw.rect(blit, "white", (col, row, 1, 1))
     for flora in realm.elements[0]:
-        if not flora.fruit.name in ("lavendar", "lily", "wildgrass"):
+        if not flora.fruit.name in ("lavendar", "lily", "wildgrass") and FRUIT_COLOUR_SET != None:
             pygame.draw.rect(blit, FLORA_COLOUR, (round(flora.x-1), round(flora.y-1), 3, 3))
-        if flora.fruit.name == "bean":
+        if flora.fruit.name == "bean" and FRUIT_COLOUR_SET != None:
             pygame.draw.rect(blit, FRUIT_COLOUR_SET["bean"], (round(flora.x-1), round(flora.y-1), 3, 3))
     return blit
 

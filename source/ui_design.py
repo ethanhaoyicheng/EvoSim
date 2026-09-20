@@ -9,7 +9,7 @@ from realm_settings import default_realm_settings, create_realm_name
 import realm_settings
 
 import os
-import sys
+
 
 def resource_path(relative_path):
     try:
@@ -161,7 +161,7 @@ tutorial_texts = [
     "You can control the music, sound effects, simulation speed, and more, using all the buttons you can see around here...",
     "That's the basic tutorial! Keep reading for info that's a little more niche ->",
     "An anima will increase in size until they reach their genetically given maturity age (given in the fact file in simulation ticks)",
-    "An anima's age is given in the fact file in decaticks (unit of 10 ticks)"
+    "An anima's age is given in the fact file in decaticks (unit of 10 ticks)",
     "An anima's size is the geometric mean of their strength (how hard they can hit) and their toughness (how much they can take)",
     "An anima's needs have the following numbers corresponding to them:",
     "0: hunger, 1: thirst, 2: sleepiness; 3: damage, 4: mating drive",

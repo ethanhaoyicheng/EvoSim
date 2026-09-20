@@ -110,6 +110,7 @@ def main():
     pygame.display.set_caption("EvoSim: " + testRealm.name)
     ui.play_music(ui.myShell)
 
+
     window = ((640-testRealm.width/2, 640+testRealm.width/2),(100, 100 + testRealm.height)) #was 120, 120 + h for y
     """left = window[0][0]
     right = window[0][1]
