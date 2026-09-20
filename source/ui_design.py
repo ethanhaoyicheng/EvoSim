@@ -194,6 +194,12 @@ pygame.mixer.init()
 
 
 tracks = ["peritune-folk-chinese(chosic.com).mp3", "00664805.mp3", "Alan Walker - Faded.mp3", "Alan Walker - The Spectre.mp3"]  
+tracks = [
+    "assets/peritune-folk-chinese(chosic.com).mp3",
+    "assets/00664805.mp3",
+    "assets/Alan Walker - Faded.mp3",
+    "assets/Alan Walker - The Spectre.mp3"
+]
 
 def play_music(shell):
     #pygame.mixer.music.load(tracks[shell.track_index])
