@@ -1,1 +1,2 @@
-Device must be able to run python software
+pygame
+#Device must be able to run python software
