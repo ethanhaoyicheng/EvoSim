@@ -319,7 +319,7 @@ def handle_ui(event, shell, sim_window, realm):
             genome_view.set_text("VIEW ANIMA")
 
 
-def handle_home_ui(event, shell):
+def handle_home_ui(screen, event, shell):
     for b in Button.home_button_list:
         b.handle_event(event)
 
