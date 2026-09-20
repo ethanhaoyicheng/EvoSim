@@ -352,9 +352,67 @@ def handle_home_ui(event, shell):
             shell.colorid = 0
 
     pygame.mixer.music.set_volume(0 if shell.music_muted else shell.music_volume)
+    draw_colour_preview(screen,colour_sets[shell.colorid],900,250)
     
     if start.clicked:
         set_sim_colours(colour_sets[shell.colorid])
         shell.running = False
 
     return
+
+def draw_colour_preview(screen, colour_set, x, y):
+
+    pygame.draw.rect(screen, "white", (x, y, 320, 220))
+    pygame.draw.rect(screen, "black", (x, y, 320, 220), 2)
+
+    title = home_font.render("Colour Preview", True, "black")
+    screen.blit(title, (x + 10, y + 10))
+
+    examples = [
+        ("adult", "roam", "Adult"),
+        ("child", "found_food", "Child"),
+        ("old", "found_water", "Old"),
+        ("corpse", "vision", "Corpse"),
+    ]
+
+    for i, (body, eye, label) in enumerate(examples):
+
+        px = x + 45 + (i % 2) * 150
+        py = y + 65 + (i // 2) * 70
+
+        body_colour = colour_set.get(body)
+        eye_colour = colour_set.get(eye)
+
+        if body_colour is not None:
+            draw_preview_anima(
+                screen,
+                px,
+                py,
+                body_colour,
+                eye_colour
+            )
+
+        text = home_font.render(label, True, "black")
+        screen.blit(
+            text,
+            (px - text.get_width() // 2, py + 18)
+        )
+
+def draw_preview_anima(screen, x, y, body_colour, eye_colour, size=12):
+    pygame.draw.circle(screen, body_colour, (x, y), size)
+
+    if eye_colour is not None:
+        pygame.draw.circle(screen, eye_colour, (x, y), max(2, size // 3))
+
+def apply_brightness(screen, brightness):
+    if brightness < 1:
+        overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+        alpha = int((1 - brightness) * 255)
+        overlay.fill((0, 0, 0, alpha))
+        screen.blit(overlay, (0, 0))
+
+    elif brightness > 1:
+        overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+        alpha = int((brightness - 1) * 150)
+        overlay.fill((255, 255, 255, alpha))
+        screen.blit(overlay, (0, 0))

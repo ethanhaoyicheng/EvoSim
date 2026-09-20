@@ -60,6 +60,8 @@ def tick_visual_realm(realm, screen, window, blit, shell):
     for anima in realm.elements[1]:
         draw_anima(anima, screen, round(left + anima.x), round(top + anima.y))
 
+    apply_brightness(screen, shell.brightness)
+
 def tick_extra_ui(screen, window, shell):
     hide_ui.draw(screen, font)
 
