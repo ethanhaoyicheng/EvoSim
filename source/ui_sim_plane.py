@@ -111,19 +111,20 @@ demonic_set = {
     "highlight" : "yellow",
 }
 
+
 monochrome_set = {
     "id" : "Noir", #B&W
-    "grass" : "white",
+    "grass" : "black",
     "flora" : "gray80",
     "fruit" : monochrome_fruit_set,
-    "water" : "black",
+    "water" : "white",
     "child" : "gray95",
     "old"   : "gray75",
-    "corpse" : "white",
+    "corpse" : "gray20",
     "adult" : "gray85",
     "meateater" : "gray65",
-    "found_food" : "gray40",
-    "found_water" : "gray10",
+    "found_food" : "gray25",
+    "found_water" : "gray98",
     "roam" : "gray70",
     "vision" : "gray60",
     "highlight" : "gray60",
