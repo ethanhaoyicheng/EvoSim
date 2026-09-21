@@ -11,17 +11,36 @@ fruit_set = {
     "bean" : "forestgreen",
 }
 
+monochrome_fruit_set = {
+    "apple" : "gray89",
+    "berry" : "gray97",
+    "lily" : "gray89",
+    "lavendar" : "gray50",
+    "melon" : "gray29",
+    "wildgrass" : "gray93",
+    "bean" : "gray10",
+}
+
 og_set = {
+    "id" : "Punk Petri (Not recommended)",
     "grass" : "green",
     "flora" : "purple",
     "fruit" : None,
+    "water" : "blue",
     "child" : "yellow",
     "old"   : "yellow",
     "corpse" : "orangered",
     "adult" : "yellow",
+    "meateater" : "yellow",
+    "found_food" : "yellow",
+    "found_water" : "yellow",
+    "roam" : "yellow",
+    "vision" : "yellow",
+    "highlight" : "white",
 }
 
 classic_set = {
+    "id" : "Classic",
     "grass" : "green",
     "flora" : "forestgreen",
     "fruit" : fruit_set,
@@ -38,7 +57,80 @@ classic_set = {
     "highlight" : "yellow",
 }
 
+vibrant_set = {
+    "id" : "Vibrant!",
+    "grass" : "mediumspringgreen",
+    "flora" : "magenta",
+    "fruit" : fruit_set,
+    "water" : "turquoise1",
+    "child" : "green",
+    "old"   : "maroon4",
+    "corpse" : "red4",
+    "adult" : "yellow",
+    "meateater" : "violetred1",
+    "found_food" : "purple",
+    "found_water" : "steelblue1",
+    "roam" : "dodgerblue",
+    "vision" : "yellow",
+    "highlight" : "yellow",
+}
+
+oceanic_set = {
+    "id" : "Oceanic",
+    "grass" : "seagreen1",
+    "flora" : "seagreen3",
+    "fruit" : fruit_set,
+    "water" : "royalblue3",
+    "child" : "turquoise1",
+    "old"   : "white",
+    "corpse" : "seashell4",
+    "adult" : "yellow",
+    "meateater" : "navyblue",
+    "found_food" : "purple",
+    "found_water" : "royalblue2",
+    "roam" : "dodgerblue",
+    "vision" : "yellow",
+    "highlight" : "yellow",
+}
+
+demonic_set = {
+    "id" : "DEMONIC",
+    "grass" : "red4",
+    "flora" : "red",
+    "fruit" : fruit_set,
+    "water" : "gold2",
+    "child" : "black",
+    "old"   : "gray84",
+    "corpse" : "white",
+    "adult" : "gray50",
+    "meateater" : "purple",
+    "found_food" : "purple",
+    "found_water" : "gold2",
+    "roam" : "dodgerblue",
+    "vision" : "yellow",
+    "highlight" : "yellow",
+}
+
+monochrome_set = {
+    "id" : "Noir", #B&W
+    "grass" : "white",
+    "flora" : "gray80",
+    "fruit" : monochrome_fruit_set,
+    "water" : "black",
+    "child" : "gray95",
+    "old"   : "gray75",
+    "corpse" : "white",
+    "adult" : "gray85",
+    "meateater" : "gray65",
+    "found_food" : "gray40",
+    "found_water" : "gray10",
+    "roam" : "gray70",
+    "vision" : "gray60",
+    "highlight" : "gray60",
+}
+
 mature_set = {
+    "id" : "Mature",
     "grass" : "darkolivegreen3",
     "flora" : "forestgreen",
     "water" : "dodgerblue",
@@ -66,13 +158,14 @@ declutter_classic_set = {
 }
 
 declutter_mature_set = mature_set.copy()
+declutter_mature_set["id"] = "Decluttered (Fruit-less)"
 declutter_mature_set["fruit_set"] = None
 
 #olivegreen?
 
 colour_set = classic_set
 
-colour_sets = [classic_set, mature_set, declutter_mature_set]
+colour_sets = [classic_set, mature_set, vibrant_set, oceanic_set, demonic_set, monochrome_set, declutter_mature_set, og_set,]
 
 def set_sim_colours(colour_set):
     global GRASS_COLOUR, FLORA_COLOUR, WATER_COLOUR, CHILD_COLOUR, SENESCENT_COLOUR, CORPSE_COLOUR, MEAT_EATER_COLOUR, ADULT_COLOUR, FOUND_FOOD_COLOUR, FOUND_WATER_COLOUR, ROAM_COLOUR

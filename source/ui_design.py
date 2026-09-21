@@ -14,9 +14,8 @@ import os
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
-    except AttributeError:
-        base_path = os.path.abspath(".")
-    
+    except Exception:
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     return os.path.join(base_path, relative_path)
 
 pygame.init()
@@ -101,7 +100,7 @@ hflora_up = Button((813,493,25,25), "+", category="home")
 hflora_down = Button((447,493,25,25), "-", category="home")
 hflora_slider = Slider((485,500,310,10), (0,100), realm_settings.flora_factor, category="home")
 
-hcolorset_button = Button((813,500,70,25), "Colour!", category="home")
+hcolorset_button = Button((90,190,110,30), "Re-colour!", category="home")
 
 start = Button((540,600,200,45), "GENERATE WORLD", category="home")
 
@@ -172,11 +171,13 @@ tutorial_texts = [
 
 colour_tutorial_texts = [
     "An anima's state can be observed from the colours of its body and eye. For instance, an anima's eye turns gold when it sleeps*",
-    "*This applies to the default colour set",
+    "*This applies to the default colour sets: Classic, Mature and Decluttered",
+    "If you're not using one of the default sets, don't worry- you'll get used to the colours in no time"
     "Default body colours: purple = poisoned, orange-red = hurt, red = wounded...",
     "...senescent = white, child = green, grey-blue = adult meat-eater, aquamarine = adult non-meat-eater ",
     "Default eye colours: blue = wandering, purple = found food, light blue = found water, lilac = searching for mate, black = hunting, white = fleeing",
     "You can't tell everything from just the colours though - click on an anima to pull up a fact file giving you all the details!",
+    ";D"
 ]
 
 evo_fact_texts = [
@@ -198,7 +199,8 @@ tracks = [
     "assets/peritune-folk-chinese(chosic.com).mp3",
     "assets/00664805.mp3",
     "assets/Alan Walker - Faded.mp3",
-    "assets/Alan Walker - The Spectre.mp3"
+    "assets/Alan Walker - The Spectre.mp3",
+    "assets/Classicals.de - Chopin - Nocturne Op. 9, No. 2 in E-flat major"
 ]
 
 def play_music(shell):
@@ -319,7 +321,7 @@ def handle_ui(event, shell, sim_window, realm):
             genome_view.set_text("VIEW ANIMA")
 
 
-def handle_home_ui(screen, event, shell):
+def handle_home_ui(event, shell):
     for b in Button.home_button_list:
         b.handle_event(event)
 
@@ -358,7 +360,7 @@ def handle_home_ui(screen, event, shell):
             shell.colorid = 0
 
     pygame.mixer.music.set_volume(0 if shell.music_muted else shell.music_volume)
-    draw_colour_preview(screen,colour_sets[shell.colorid],900,250)
+    
     
     if start.clicked:
         set_sim_colours(colour_sets[shell.colorid])
@@ -368,22 +370,24 @@ def handle_home_ui(screen, event, shell):
 
 def draw_colour_preview(screen, colour_set, x, y):
 
-    pygame.draw.rect(screen, "white", (x, y, 320, 220))
-    pygame.draw.rect(screen, "black", (x, y, 320, 220), 2)
+    pygame.draw.rect(screen, "blue", (x, y, 320, 270))
+    pygame.draw.rect(screen, "black", (x, y, 320, 270), 2)
 
-    title = home_font.render("Colour Preview", True, "black")
-    screen.blit(title, (x + 10, y + 10))
+    title = home_font.render(colour_set["id"], True, "green")
+    screen.blit(title, (x + 160 - title.get_width()/2, y + 10))
 
     examples = [
         ("adult", "roam", "Adult"),
         ("child", "found_food", "Child"),
-        ("old", "found_water", "Old"),
+        ("old", "found_water", "Senescent"),
         ("corpse", "vision", "Corpse"),
+        ("water", "water", "Water"),
+        ("grass", "flora", "Vegetation"),
     ]
 
     for i, (body, eye, label) in enumerate(examples):
 
-        px = x + 45 + (i % 2) * 150
+        px = x + 85 + (i % 2) * 150
         py = y + 65 + (i // 2) * 70
 
         body_colour = colour_set.get(body)
@@ -398,7 +402,7 @@ def draw_colour_preview(screen, colour_set, x, y):
                 eye_colour
             )
 
-        text = home_font.render(label, True, "black")
+        text = font.render(label, True, "cyan")
         screen.blit(
             text,
             (px - text.get_width() // 2, py + 18)

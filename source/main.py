@@ -37,7 +37,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit()
-            ui.handle_home_ui(screen, event, homeShell)
+            ui.handle_home_ui(event, homeShell)
            
         clock.tick(5)
         

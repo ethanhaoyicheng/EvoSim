@@ -115,6 +115,7 @@ def tick_home_ui(screen, shell):
     txt = home_font.render("Vegetation density : " + to_display(shell.realm_flora_factor), False, "aquamarine")
     screen.blit(txt, txt.get_rect(center = (screen.get_width()/2 - 5, 540)))
 
+    draw_colour_preview(screen,colour_sets[shell.colorid],70,230)
 
     
 #grass is green, flora is purple : legacy
