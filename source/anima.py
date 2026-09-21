@@ -86,7 +86,7 @@ food_list = [
     "wildgrass",
 ]
 
-green_food_list = food_list
+green_food_list = food_list.copy()
 green_food_list.remove("meat")
 
 class Anima(Cell):
@@ -216,7 +216,7 @@ class Anima(Cell):
                 self.update(0,1)
                 self.grow()
         
-        if self.is_senescent:
+        if self.is_senescent():
             self.update(3, 0.1)
 
         self.age += 1

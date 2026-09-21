@@ -200,7 +200,7 @@ tracks = [
     "assets/00664805.mp3",
     "assets/Alan Walker - Faded.mp3",
     "assets/Alan Walker - The Spectre.mp3",
-    "assets/Classicals.de - Chopin - Nocturne Op. 9, No. 2 in E-flat major"
+    "assets/Classicals.de - Chopin - Nocturne Op. 9, No. 2 in E-flat major.mp3"
 ]
 
 def play_music(shell):
