@@ -28,6 +28,7 @@ echo "Logging into Butler..."
 echo "Uploading to itch.io..."
 "$BUTLER" push \
 "dist/Evolution Simulator.app" \
-twinkledelux/evosim:mac
+twinkledelux/evosim:mac \
+--userversion="$USER_VERSION"
 
 echo "Successfully uploaded v$USER_VERSION!"
