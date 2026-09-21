@@ -3,7 +3,7 @@
 set -e
 
 echo "Building Evolution Simulator..."
-rm -rf build
+rm -rf build dist
 python3.11 -m PyInstaller main.spec
 
 echo "Uploading to itch.io..."
