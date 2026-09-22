@@ -21,9 +21,12 @@ class SpatialHash:
         return neighbour_list
 
     def add_element(self, element):
-        bucket = self.__get_hash(element.x, element.y)
-        self.buckets[bucket].append(element)
-        element.bucket = bucket
+        if element.bucket == -1:
+            bucket = self.__get_hash(element.x, element.y)
+            self.buckets[bucket].append(element)
+            element.bucket = bucket
+            return True
+        return False
     
     def remove_element(self, element):
         bucket = element.bucket
@@ -32,10 +35,9 @@ class SpatialHash:
         self.buckets[bucket].remove(element)
 
     def update_element(self, element):
-        if element.bucket == -1:
-            self.add_element(element)
+        if not self.add_element(element):
+            
         #skip exception for flora?
-        else:
             current_b = self.__get_hash(element.x, element.y)
             prev_b = element.bucket
             if current_b != prev_b:

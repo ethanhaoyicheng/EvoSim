@@ -26,3 +26,5 @@ def test_sim_shell_defaults():
     assert shell.tutorial_index == 0
     assert shell.ctutorial_index == 0
     assert shell.anima_to_view is None
+
+f
