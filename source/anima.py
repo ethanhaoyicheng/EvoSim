@@ -649,10 +649,10 @@ else:
         return anima in self.offspring or anima in self.parents or anima == self
     
     def is_satiated(self):
-        return self.status[1] < 35
+        return self.status[0] < 35
     
     def is_starving(self):
-        return self.status[1] > 72.5
+        return self.status[0] > 72.5
         
     def is_injured(self):
         return self.status[3] > self.injury_threshold

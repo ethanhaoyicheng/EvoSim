@@ -11,7 +11,8 @@ class Flora(Cell):
         self.fruit = fruit
         self.capacity = genotype[0]
         self.batch_size = genotype[1]
-        self.rate = genotype[2] * self.realm.temperature / max(1, min(10, sqrt(self.distance_to_nearest_a(1))))
+        #self.rate = genotype[2] * self.realm.temperature / max(1, min(10, sqrt(self.distance_to_nearest_a(1))))
+        self.rate = genotype[2] * self.realm.temperature
         self.fruitNo = fruitNo
 
         self.food_given = self.fruit.name
