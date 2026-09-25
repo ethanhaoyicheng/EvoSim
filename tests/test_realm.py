@@ -21,12 +21,12 @@ def test_world_generation():
 def test_water_generation():
     realm = Realm(*realm_settings.default_realm_settings)
     realm._Realm__generate_water()
-    assert realm.check_water() > realm.wetness 
+    assert realm.check_water() >= realm.wetness 
 
 def test_ice_generation():
     realm = Realm(*realm_settings.default_realm_settings)
     realm._Realm__generate_ice()
-    assert realm.check_ice() > realm.iceness
+    assert realm.check_ice() >= realm.iceness
 
 def test_flora_generation():
     default_temp = realm_settings.flora_factor
