@@ -802,7 +802,7 @@ else:
         mate.update(4,-(mate.refractory+5))
         mate.locked = False
 
-        print(f"{newborn.nickname} was born to {self.nickname} and {mate.nickname}!")
+        #print(f"{newborn.nickname} was born to {self.nickname} and {mate.nickname}!")
 
     def lock_mate(self, mate):
         mate.locked = True
