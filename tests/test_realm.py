@@ -36,4 +36,4 @@ def test_flora_generation():
     realm_settings.default_realm_settings[6] = realm_settings.generate_flora(2, 1)
     realm = Realm(*realm_settings.default_realm_settings)
     assert len(realm.elements[0]) > realm_settings.default_tree_count
-    ealm_settings.default_realm_settings[6] = realm_settings.generate_flora(default_temp, 1)
+    realm_settings.default_realm_settings[6] = realm_settings.generate_flora(default_temp, 1)
