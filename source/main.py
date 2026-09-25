@@ -125,7 +125,7 @@ def main():
 
     print("A new world arises!")
 
-    while ui.myShell.running:
+    for i in range(200):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 ui.myShell.running = False
@@ -139,7 +139,7 @@ def main():
 
             mySim.tick()
             
-        clock.tick(5 * ui.myShell.sim_speed)
+        #clock.tick(5 * ui.myShell.sim_speed)
         print(clock.get_fps())
         
         screen.fill(ui.BACKGROUND_COLOUR)
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     main()
     profiler.disable()
 
-    profiler.dump_stats("evosim_profile_10kstarting.prof")
+    profiler.dump_stats("evosim_profile_10k/200.prof")
 
     stats = pstats.Stats(profiler)
     stats.sort_stats("cumulative")
