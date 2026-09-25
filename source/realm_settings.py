@@ -12,6 +12,7 @@ carnivore_count = 30
 any_count = 20
 
 flora_factor = 25
+default_tree_count = 25
 
 #[["tree", 600], ["bush", 800], ["lily", 500]]
 
@@ -26,9 +27,9 @@ def generate_primordial_list(width, height, herbivore_count, carnivore_count, an
     return anima_list
 
 def generate_flora(batch_count, scale_factor):
-    extra_batch = True if random.random() < batch_count // 1 else False
+    extra_batch = True if random.random() < batch_count % 1 else False
     batch_count = int(batch_count//1 + 2*int(extra_batch) - 1)
-    flora_list = [["tree", 25]]
+    flora_list = [["tree", default_tree_count]]
     for batch in range(batch_count):
         plant = random.choice(list(flora_species.keys()))
         n = flora_species[plant][5]

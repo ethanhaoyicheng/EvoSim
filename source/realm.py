@@ -86,6 +86,8 @@ class Realm:
             iteration_count += 1
             print(iteration_count)
             print("iteration^")
+        print(self.wetness)
+        print(self.check_water())
 
     def __generate_ice(self):
         print("Generating ice...")
@@ -201,7 +203,7 @@ class Realm:
                                 starting_fruit_amount += 1
                             bud = Flora(flora_id, [flo[1], flo[2], flo[3]], self, cx, cy, flo[4], starting_fruit_amount)    #could make eg bushes cluster together, bush dwellers, vbush camoflage, sim. give animas foresight to see which terrain they will step into, weightings toward preferred terrains, and camo in certain terrains, simulates stealth/ambush
                             self.elements[0].append(bud)
-                            self.environment[cy][cx] = species[0] + str(flora_id)                                   #does this mess too much with terrain effects, ie amphibian factor in water, discrete object of whole tile taken up by plant...
+                            self.environment[cy][cx] = species[0] #+ str(flora_id)                                   #does this mess too much with terrain effects, ie amphibian factor in water, discrete object of whole tile taken up by plant...
                             self.spatialhash.add_element(bud)
 
                             flora_id += 1
