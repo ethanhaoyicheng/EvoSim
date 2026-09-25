@@ -40,12 +40,10 @@ def main():
             ui.handle_home_ui(event, homeShell)
            
         clock.tick(5)
-        print(clock.get_fps())
         
         screen.fill(ui.HOME_BACKGROUND_COLOUR)
         ui.tick_home_ui(screen, homeShell)
         pygame.display.flip()
-
 
     ui.myShell.music_volume = homeShell.music_volume
 
@@ -125,7 +123,7 @@ def main():
 
     print("A new world arises!")
 
-    for i in range(200):
+    while ui.myShell.running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 ui.myShell.running = False
@@ -139,8 +137,7 @@ def main():
 
             mySim.tick()
             
-        #clock.tick(5 * ui.myShell.sim_speed)
-        print(clock.get_fps())
+        clock.tick(5 * ui.myShell.sim_speed)
         
         screen.fill(ui.BACKGROUND_COLOUR)
         ui.tick_visual_realm(testRealm, screen, window, blit, ui.myShell)
@@ -182,23 +179,8 @@ def main():
     display([anima.diet for anima in testRealm.elements[1] if len(anima.diet) >= 2])
     return 0
 
-
-
-import cProfile
-import pstats
-
-if __name__ == "__main__":
-    profiler = cProfile.Profile()
-
-    profiler.enable()
+if __name__=="__main__":
     main()
-    profiler.disable()
-
-    profiler.dump_stats("evosim_profile_1k:200.prof")
-
-    stats = pstats.Stats(profiler)
-    stats.sort_stats("cumulative")
-    stats.print_stats(30)
 
 #add carcasses to spatial hash and as class
 
