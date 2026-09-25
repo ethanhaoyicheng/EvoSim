@@ -673,7 +673,6 @@ else:
         return self.age >= self.senescence_age
 
     def is_dead(self):  
-        return False
         if any(need >= 100 for i,need in enumerate(self.status) if i != 2):  #except sleep?
             return True
         return False
@@ -767,7 +766,7 @@ else:
                 self.extra_traits.correct_traits()
 
     def mate(self, mate):
-        """new_genome = self.mix_genomes(mate)
+        new_genome = self.mix_genomes(mate)
 
         newborn = Anima(self.realm.anima_id(), self.realm.creature_naming_mode, new_genome, self.realm, self.x, (self.y+1)%self.realm.height)   #random adjacent cell?  #sad that cannot isolate from realm for this line
         newborn.parents.extend([self, mate])
@@ -791,7 +790,7 @@ else:
                 self.offspring.append(twin_newborn)
                 mate.offspring.append(twin_newborn)
                 self.realm.add_element(twin_newborn)
-                print(f"{newborn.nickname} and {twin_newborn.nickname} are twins!")"""
+                print(f"{newborn.nickname} and {twin_newborn.nickname} are twins!")
 
 
         self.update(2,50)
@@ -802,7 +801,7 @@ else:
         mate.update(4,-(mate.refractory+5))
         mate.locked = False
 
-        #print(f"{newborn.nickname} was born to {self.nickname} and {mate.nickname}!")
+        print(f"{newborn.nickname} was born to {self.nickname} and {mate.nickname}!")
 
     def lock_mate(self, mate):
         mate.locked = True

@@ -18,11 +18,6 @@ default_tree_count = 25
 
 def generate_primordial_list(width, height, herbivore_count, carnivore_count, any_count):
     anima_list = []
-    for i in range(1000):
-        anima_list.append(Anima(i, "name/diet/strength/toughness", [(random.choice(food_list),), [random.uniform(1, 5), [1,0.5,0.3]], random.uniform(15, 30), random.uniform(5,15), random.uniform(4,10), random.uniform(4,10), random.uniform(30,80), random.uniform(0, 1), random.uniform(30,100), random.uniform(40,200), random.uniform(5,50), ExtraTraits(set())], None, random.uniform(0, width) , random.uniform(0, height)))
-
-    return anima_list
-
     for i in range(herbivore_count): 
         anima_list.append(Anima(i, "name/diet/strength/toughness", [(random.choice(green_food_list),), [random.uniform(1, 5), [1,0.5,0.3]], random.uniform(15, 30), random.uniform(5,15), random.uniform(4,10), random.uniform(4,10), random.uniform(30,80), random.uniform(0, 1), random.uniform(30,100), random.uniform(40,200), random.uniform(5,50), ExtraTraits(set())], None, random.uniform(0, width) , random.uniform(0, height)))
     for i in range(carnivore_count): 
