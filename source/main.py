@@ -194,7 +194,7 @@ if __name__ == "__main__":
     main()
     profiler.disable()
 
-    profiler.dump_stats("evosim_profile_10k/200.prof")
+    profiler.dump_stats("evosim_profile_1k/200.prof")
 
     stats = pstats.Stats(profiler)
     stats.sort_stats("cumulative")
