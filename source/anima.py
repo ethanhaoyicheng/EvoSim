@@ -450,10 +450,9 @@ class Anima(Cell):
         nearest_dist = vision + 1
 
         for threat in self.check_spatial_hash(vision):
-            if isinstance(threat, Anima):
+            if isinstance(threat, Anima) and self.is_threatened_by(threat):
                 dist = self.distance_to(threat)
                 if min(dist, nearest_dist, vision) == dist:    #vision for emergency clamping  
-                    if  self.is_threatened_by(threat):
                         nearest_dist = dist
                         nearest_danger = threat
         return nearest_danger
