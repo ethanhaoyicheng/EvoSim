@@ -141,6 +141,7 @@ def main():
             
         #clock.tick(5 * ui.myShell.sim_speed)
         print(clock.get_fps())
+        print(i)
         
         screen.fill(ui.BACKGROUND_COLOUR)
         ui.tick_visual_realm(testRealm, screen, window, blit, ui.myShell)
@@ -194,7 +195,7 @@ if __name__ == "__main__":
     main()
     profiler.disable()
 
-    profiler.dump_stats("evosim_profile_1k_200.prof")
+    profiler.dump_stats("evosim_profile_10k_200.prof")
 
     stats = pstats.Stats(profiler)
     stats.sort_stats("cumulative")
