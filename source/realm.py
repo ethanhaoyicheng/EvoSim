@@ -51,6 +51,7 @@ class Realm:
         self.ghostyard = [[],[]]
         #self.environment = [[],[]]          #elements not updated once simulation starts    [water][ice]
         self.environment = []               #stores terrain or flora at each x/y access by environment[row][col] aka [y][x] 
+        #self.watermap = []
         self.spatialhash = SpatialHash(SPATIAL_HASH_CELL_SIZE, self.width, self.height)
 
         self.creature_naming_mode = creature_naming_mode
@@ -210,6 +211,10 @@ class Realm:
                             iteration_count = MAX_FLORA_GENERATION_ITERATION_COUNT
 
                         iteration_count += 1
+
+    #def generate_nearest_water_map(self):
+     #   self.watermap = [[None for _ in range(self.width)] for _ in range(self.height)]
+
                     
     def realm_report(self):
         return 0

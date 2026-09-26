@@ -156,6 +156,8 @@ class Anima(Cell):
         self.alias = None
         self.nickname = self.create_nickname(naming_mode)  #dependent on realm
 
+        self.generate_vision_offsets() #every time vision changes
+
     def tickThink(self):
         self.responses.append(self.unlock)
         self.setGoals()
@@ -350,6 +352,10 @@ class Anima(Cell):
         tx, ty = self.get_target_x(), self.get_target_y()                   #direct centre targetting problem, with high resolution is negligible
         return self.is_within_point(tx,ty,self.reach)
 
+    def generate_vision_offsets(self):
+        from helper import generate_circle_offsets
+        self.vision_offsets = generate_circle_offsets(self.vision)
+
     def checkSurroundings(self):              #checks surroundings and sets target
         vision_modifier = 1
 
@@ -360,12 +366,12 @@ class Anima(Cell):
 
         self.cells_to_check = []
 
-        for dy in range(int(2*vision+1)):      #future: raycasting prevents animas seeing through objects
+        '''for dy in range(int(2*vision+1)):      #future: raycasting prevents animas seeing through objects
             row = (int(self.y - vision) + dy) % self.realm.height
             for dx in range(2*int(vision)+1):
                 col = (int(self.x - vision + 0.5) + dx) % self.realm.width
                 if self.distance_to_point(col, row) <= vision:
-                    self.cells_to_check.append((row, col))
+                    self.cells_to_check.append((row, col))'''
                 
         target = self.__check_for_danger(vision)
         if target == None:
@@ -422,12 +428,23 @@ class Anima(Cell):
         nearest_water = None
         nearest_dist = vision + 1
 
-        for pos in self.cells_to_check:
+        """for pos in self.cells_to_check:
             if self.realm.environment[pos[0]][pos[1]] == "water":
                 dist = self.distance_to_point(pos[1], pos[0])
                 if min(dist, nearest_dist, vision) == dist:    #vision for emergency clamping
                     nearest_dist = dist
-                    nearest_water = (pos[1],pos[0])   
+                    nearest_water = (pos[1],pos[0]) """  
+        mx = int(round(self.x))
+        my = int(round(self.y))
+        for dx, dy in self.vision_offsets:
+            x = (mx+dx)% self.realm.width
+            y = (my+dy)% self.realm.height
+            if self.realm.environment[y][x] == "water":
+                dist = self.distance_to_point(x, y)
+                if dist <= vision and dist < nearest_dist:    #vision for emergency clamping
+                    nearest_dist = dist
+                    nearest_water = (x,y)
+        
         return nearest_water
     
     def __check_for_mates(self, vision):
@@ -620,6 +637,7 @@ else:
         
         if "sand-attack" in attacks:
             anima.conditions.append(blind)
+
         
         
             
@@ -966,6 +984,7 @@ def intoxicated(this):
 intoxicated.effect_type = "intoxicated"
 
 def blind(this):
+    this.generate_vision_offsets()
     if random.random() < 0.15: 
         this.conditions.remove(blind)
 blind.effect_type = "blind"
