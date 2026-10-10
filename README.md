@@ -3,7 +3,8 @@ An evolutionary simulator, built in Python (2025-present)
 
 Current priorities:
 - Fix bottleneck from animas' detection (for water and other animas), which currently runs on O(n^2) time and scales badly at the >1k range (In progress - 50%)
-- Implement stats and records page with intuitive and user-friendly UI (In progress - 20%)
+- Implement stats and records page with intuitive and user-friendly UI (In progress - 20%)  
+
 Progress percentages are estimates
 
 Future targets:
