@@ -894,7 +894,10 @@ else:
         pass
 
 #should've made genome a class maybe
-def mix_genes(gene_type, A, B, food_options = food_list):
+def mix_genes(gene_type, A, B, food_options = None):
+    if food_options == None:
+        food_options = food_list.copy()
+    
     if gene_type == tuple:              #diet must be only tuple
         new_gene = ()
         if random.uniform(0,1) < 0.1 and HYBRID_DIETS_ON == True:                                        #omnivore
