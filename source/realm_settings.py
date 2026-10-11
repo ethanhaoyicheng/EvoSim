@@ -4,6 +4,7 @@ from flora import flora_species
 from extratraits import ExtraTraits
 import random
 
+import sys
 seed = random.randrange(sys.maxsize)
 rng = random.Random(seed)
 print('Primordial list of seed ' + seed)
