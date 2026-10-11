@@ -4,6 +4,10 @@ from flora import flora_species
 from extratraits import ExtraTraits
 import random
 
+seed = random.randrange(sys.maxsize)
+rng = random.Random(seed)
+print('Primordial list of seed ' + seed)
+
 width = 600
 height = 500
 
