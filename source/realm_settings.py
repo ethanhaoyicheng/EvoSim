@@ -7,7 +7,7 @@ import random
 import sys
 seed = random.randrange(sys.maxsize)
 rng = random.Random(seed)
-print('Primordial list of seed ' + seed)
+print('Primordial list of seed ' + str(seed))
 
 width = 600
 height = 500
